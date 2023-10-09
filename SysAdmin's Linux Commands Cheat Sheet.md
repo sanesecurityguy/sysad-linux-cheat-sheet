@@ -53,7 +53,11 @@ Monitor updates to that file:<br>
 `tail -f record.log`<br>
 Kill the recording command:<br>
 `kill $(cat recorder.pid) && rm recorder.pid`<br>
-Remember to kill it when you don't need it anymore.
+In case you lose the recording command's PID, it will show up here if you're still in the same terminal session:<br>
+`jobs -l`<br>
+If you're not in the same terminal session, it will still show up here, though with unrelated processes, so try not to kill anything important:<br>
+`ps -C bash -o pid,user,args`<br>
+Remember to kill it when you don't need it anymore, otherwise it will perpetually eat up drive space.
 
 Completely clear your bash history:<br>
 `cat /dev/null > ~/.bash_history && history -c`<br>
