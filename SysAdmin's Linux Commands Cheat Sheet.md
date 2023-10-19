@@ -51,13 +51,14 @@ Record in the background to a file the time (with time zone) and output of one o
 `while sleep 5; do date +"%H:%M:%S %:z"; [COMMAND 1]; [COMMAND 2]; echo; done >> record.log & echo $! > recorder.pid`<br>
 Monitor updates to that file:<br>
 `tail -f record.log`<br>
-Kill the recording command:<br>
+Remember to kill it when you don't need it anymore, otherwise it will perpetually eat up drive space:<br>
 `kill $(cat recorder.pid) && rm recorder.pid`<br>
 In case you lose the recording command's PID, it will show up here if you're still in the same terminal session:<br>
 `jobs -l`<br>
 If you're not in the same terminal session, it will still show up here, though with unrelated processes, so try not to kill anything important:<br>
 `ps -C bash -o pid,user,args`<br>
-Remember to kill it when you don't need it anymore, otherwise it will perpetually eat up drive space.
+You can see the PID of the current terminal session with this:<br>
+`echo $$`
 
 Completely clear your bash history:<br>
 `cat /dev/null > ~/.bash_history && history -c`<br>
