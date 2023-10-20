@@ -9,15 +9,15 @@ List all partitions:<br>
 List only local partitions:<br>
 `df -hl -x tmpfs -x devtmpfs`
 
+Find the 10 largest **directories** in /dir/:<br>
+`du -hx -d 1 /dir/ | sort -hr | head -11 | tail -10`<br>
+Find the 10 largest **directories and files** in /dir/:<br>
+`du -hax -d 1 /dir/ | sort -hr | head -11 | tail -10`
+
 Recursively find the 20 largest **files** in /dir/ larger than 1 gibibyte:<br>
 `find /dir/ -type f -size +1G -exec du -sh "{}" \; | sort -hr | head -20`<br>
 For files smaller than 1 gibibyte: replace `+1G` with `-1G`<br>
 For files larger than 500 mebibytes: replace `+1G` with `+500M`
-
-Find the 10 largest **directories** in /dir/:<br>
-`du -shx /dir/* | sort -hr | head -10`<br>
-Find the 10 largest directories in **/**:<br>
-`du -hx -d 1 / | sort -hr | head -11 | tail -10`
 
 Find the 10 most recently modified files and directories in /dir/:<br>
 `stat -c "%y %n" /dir/* | sort -hr | head -10`<br>
