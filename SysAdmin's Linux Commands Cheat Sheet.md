@@ -10,9 +10,9 @@ List only local partitions:<br>
 `df -hl -x tmpfs -x devtmpfs`
 
 Find the 10 largest **directories** in /dir/:<br>
-`du -hx -d 1 /dir/ | sort -hr | head -11 | tail -10`<br>
+`du -hx -d 1 /dir/ | sort -hr | sed -n '2,11 p'`<br>
 Find the 10 largest **directories and files** in /dir/:<br>
-`du -hax -d 1 /dir/ | sort -hr | head -11 | tail -10`
+`du -hax -d 1 /dir/ | sort -hr | sed -n '2,11 p'`
 
 Recursively find the 20 largest **files** in /dir/ larger than 1 gibibyte:<br>
 `find /dir/ -type f -size +1G -exec du -sh "{}" \; | sort -hr | head -20`<br>
