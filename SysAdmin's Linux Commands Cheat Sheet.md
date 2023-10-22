@@ -22,7 +22,7 @@ For files larger than 500 mebibytes: replace `+1G` with `+500M`
 Find the 10 most recently modified files and directories in /dir/:<br>
 `stat -c "%y %n" /dir/* | sort -hr | head -10`<br>
 **Recursively** find the 10 most recently modified files in /dir/ that have been modified in the last 24 hours:<br>
-`find /dir/ -type f -mtime -1 -exec stat --format '%Y :%y %n' "{}" \; | sort -nr | cut -d ":" -f 2- | head -10`
+`find /dir/ -type f -mtime -1 -exec stat --format '%Y :%y %n' "{}" \; | sort -nr | head -10 | cut -d ":" -f 2-`
 
 Check what processes are listening on what ports:<br>
 `ss -tupln`<br>
