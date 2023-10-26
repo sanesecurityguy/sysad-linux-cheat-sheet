@@ -46,7 +46,7 @@ Start, stop, or reboot a virtual machine:<br>
 
 Verify that one or more TLS certificates are valid:<br>
 `openssl verify -CApath /etc/ssl/certs/ -CAfile [CA-BUNDLE.crt] [TLS.crt] [TLS-2.crt] [TLS-3.crt] [...]`<br>
-Note that `-CApath /etc/ssl/certs/` in necessary when the CA bundle doesn't contain the root CA certificate, which is normal and expected by most web browsers but not expected by `openssl`.
+Note that `-CApath /etc/ssl/certs/` is necessary when the CA bundle doesn't contain the root CA certificate, which is normal and expected by most web browsers but not expected by `openssl`.
 
 Record to the terminal the output of one or more commands every 5 seconds:<br>
 `while sleep 5; do [ONE OR MORE COMMANDS SEPARATED BY SEMICOLONS]; echo; done`<br>
