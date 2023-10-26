@@ -44,11 +44,15 @@ Start, stop, or reboot a virtual machine:<br>
 `virsh shutdown [VM-NAME]`<br>
 `virsh reboot [VM-NAME]`
 
+Verify that one or more TLS certificates are valid:<br>
+`openssl verify -CApath /etc/ssl/certs/ -CAfile [CA-BUNDLE.crt] [TLS.crt] [TLS-2.crt] [TLS-3.crt] [...]`<br>
+Note that `-CApath /etc/ssl/certs/` in necessary when the CA bundle doesn't contain the root CA certificate, which is normal and expected by most web browsers but not expected by `openssl`.
+
 Record to the terminal the output of one or more commands every 5 seconds:<br>
 `while sleep 5; do [ONE OR MORE COMMANDS SEPARATED BY SEMICOLONS]; echo; done`<br>
 **Stop it with [Ctrl + C]**<br>
 Record in the background to a file the time (with time zone) and output of one or more commands every 5 seconds, and save the recording command's PID:<br>
-`while sleep 5; do date +"%H:%M:%S %:z"; [COMMAND 1]; [COMMAND 2]; echo; done >> record.log & echo $! > recorder.pid`<br>
+`while sleep 5; do date +"%H:%M:%S %:z"; [COMMAND 1]; [COMMAND 2]; [...]; echo; done >> record.log & echo $! > recorder.pid`<br>
 Monitor updates to that file:<br>
 `tail -f record.log`<br>
 Remember to kill it when you don't need it anymore, otherwise it will perpetually eat up drive space:<br>
