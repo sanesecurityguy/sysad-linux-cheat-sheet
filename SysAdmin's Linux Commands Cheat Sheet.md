@@ -64,6 +64,9 @@ If you're not in the same terminal session, it will still show up here, though w
 You can see the PID of the current terminal session with this:<br>
 `echo $$`
 
+Search for SELinux denials:<br>
+`ausearch -m AVC,USER_AVC,SELINUX_ERR,USER_SELINUX_ERR -ts recent -c [COMMAND-OR-PROCESS-NAME]`
+
 Completely clear your bash history:<br>
 `cat /dev/null > ~/.bash_history && history -c`<br>
 You might want to do this when you have sensitive information like passwords in your bash history.
