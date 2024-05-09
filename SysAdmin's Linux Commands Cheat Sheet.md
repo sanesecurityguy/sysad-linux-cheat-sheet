@@ -15,7 +15,7 @@ Find the 10 largest **directories and files** in /dir/:<br>
 `du -hax -d 1 /dir/ | sort -hr | sed -n '2,11 p'`
 
 Recursively find the 20 largest **files** in /dir/ larger than 1 gibibyte:<br>
-`find /dir/ -type f -size +1G -exec du -sh "{}" \; | sort -hr | head -20`<br>
+`find /dir/ -type f -size +1G -exec du -h "{}" \+ | sort -hr | head -20`<br>
 For files smaller than 1 gibibyte: replace `+1G` with `-1G`<br>
 For files larger than 500 mebibytes: replace `+1G` with `+500M`
 
