@@ -19,6 +19,9 @@ Recursively find the 20 largest **files** in /dir/ larger than 1 gibibyte:<br>
 For files smaller than 1 gibibyte: replace `+1G` with `-1G`<br>
 For files larger than 500 mebibytes: replace `+1G` with `+500M`
 
+Recursively find the 20 largest **files** in /dir/ larger than 1 gibibyte, older than 1 year old, and give the total space used by all such files (not just the largest 20):<br>
+`find /dir/ -type f -size +1G -mtime +365 -exec du -chx "{}" \+ | sort -h | tail -21`
+
 Find the 10 most recently modified files and directories in /dir/:<br>
 `stat -c "%y %n" /dir/* | sort -hr | head -10`<br>
 **Recursively** find the 10 most recently modified files in /dir/ that have been modified in the last 24 hours:<br>
