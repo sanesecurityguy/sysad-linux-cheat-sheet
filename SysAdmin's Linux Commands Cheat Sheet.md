@@ -70,7 +70,9 @@ You can see the PID of the current terminal session with this:<br>
 Search for SELinux denials:<br>
 `ausearch -m AVC,USER_AVC,SELINUX_ERR,USER_SELINUX_ERR -ts recent -c [COMMAND-OR-PROCESS-NAME]`
 
-Create an SSH tunnel<br>
+Open an SSH-tunneled SSH session:<br>
+`ssh -t [USERNAME]@[RELAY-IP] ssh [USERNAME]@[ENDPOINT-IP]`<br>
+Create an SSH tunnel to a TCP socket:<br>
 `ssh -L localhost:[LOCAL-PORT]:[ENDPOINT-IP]:[ENDPOINT-PORT] -N [USERNAME]@[RELAY-IP]`
 
 Completely clear your bash history:<br>
