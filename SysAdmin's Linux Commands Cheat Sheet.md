@@ -39,7 +39,7 @@ List all virtual machines managed by `virt-manager`:<br>
 List a virtual machine's allocated CPU's:<br>
 `virsh vcpucount [VM-NAME]`<br>
 List a virtual machine's allocated memory:<br>
-`virsh memtune [VM-NAME]`<br>
+`virsh dommemstat [VM-NAME] | grep actual`<br>
 List the mount points of a virtual machine's drives:<br>
 `virsh domblklist [VM-NAME]`<br>
 Start, stop, or reboot a virtual machine:<br>
