@@ -27,6 +27,12 @@ Find the 10 most recently modified files and directories in /dir/:<br>
 **Recursively** find the 10 most recently modified files in /dir/ that have been modified in the last 24 hours:<br>
 `find /dir/ -type f -mtime -1 -exec stat --format '%Y :%y %n' "{}" \; | sort -nr | head -10 | cut -d ":" -f 2-`
 
+See which processes are writing the most to disk:<br>
+`iotop -Po -d 10`<br>
+Use the [LEFT] and [RIGHT] arrow keys to choose which column to sort the results by, and use the [R] key to reverse the sorting order.<br>
+See which files and directories a process is writing to:<br>
+`lsof -p [PID]`
+
 Check what processes are listening on what ports:<br>
 `ss -tupln`<br>
 Check what Docker containers are listening on what ports:<br>
