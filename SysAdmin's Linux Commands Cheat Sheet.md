@@ -33,6 +33,9 @@ Use the [LEFT] and [RIGHT] arrow keys to choose which column to sort the results
 See which files and directories a process is writing to:<br>
 `lsof -p [PID]`
 
+Backup a directory to another location:<br>
+`sudo rsync -razvP [SOURCE] [DESTINATION]`
+
 Check what processes are listening on what ports:<br>
 `ss -tupln`<br>
 Check what Docker containers are listening on what ports:<br>
