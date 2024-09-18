@@ -40,7 +40,7 @@ Check what Docker containers are listening on what ports:<br>
 Check what Podman containers are listening on what ports:<br>
 `podman ps --format "table {{.Names}}\t{{.Ports}}"`
 
-List all virtual machines managed by `virt-manager`:<br>
+List all virtual machines:<br>
 `virsh list --all`<br>
 List a virtual machine's allocated CPU's:<br>
 `virsh vcpucount [VM-NAME]`<br>
