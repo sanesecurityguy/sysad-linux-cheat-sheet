@@ -34,7 +34,7 @@ See which files and directories a process is writing to:<br>
 `lsof -p [PID]`
 
 Backup a directory to another location:<br>
-`sudo rsync -razvP [SOURCE] [DESTINATION]`
+`sudo rsync -azvHAP [SOURCE] [DESTINATION]`
 
 Check what processes are listening on what ports:<br>
 `ss -tupln`<br>
