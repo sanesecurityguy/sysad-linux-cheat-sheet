@@ -34,7 +34,11 @@ See which files and directories a process is writing to:<br>
 `lsof -p [PID]`
 
 Backup a directory to another location:<br>
-`sudo rsync -azvHAP [SOURCE] [DESTINATION]`
+`rsync -vazHAP [SOURCE] [DESTINATION]`<br>
+Same as above but with root privileges on the remote machine:<br>
+`rsync --rsync-path="sudo rsync" -vazHAP [SOURCE] [DESTINATION]`<br>
+Same as above but using an AskPass program to provide a mandatory password upon sudo-ing:<br>
+`rsync --rsync-path="export SUDO_ASKPASS=[PATH-TO-ASKPASS-PROGRAM]; sudo -A rsync" -vazHAP [SOURCE] [DESTINATION]`
 
 Check what processes are listening on what ports:<br>
 `ss -tupln`<br>
