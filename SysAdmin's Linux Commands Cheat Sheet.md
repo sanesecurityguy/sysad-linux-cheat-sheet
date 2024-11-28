@@ -91,3 +91,10 @@ Create an SSH tunnel to a TCP socket:<br>
 Completely clear your bash history:<br>
 `cat /dev/null > ~/.bash_history && history -c`<br>
 You might want to do this when you have sensitive information like passwords in your bash history.
+
+### DNF
+
+See updates and patches available for a software package:<br>
+`dnf updateinfo --info [PACKAGE-NAME]`<br>
+See updates and patches already installed for a software package:<br>
+`dnf updateinfo --info --installed [PACKAGE-NAME]`
