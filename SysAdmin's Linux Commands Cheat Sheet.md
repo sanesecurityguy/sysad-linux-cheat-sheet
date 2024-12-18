@@ -9,9 +9,9 @@ List all partitions:<br>
 List only local partitions:<br>
 `df -hl -x tmpfs -x devtmpfs`
 
-Find the 10 largest **directories** in /dir/:<br>
+Find the 9 largest **directories** in /dir/:<br>
 `du -hx -d 1 /dir/ | sort -hr | head`<br>
-Find the 10 largest **directories and files** in /dir/:<br>
+Find the 9 largest **directories and files** in /dir/:<br>
 `du -hax -d 1 /dir/ | sort -hr | head`
 
 Recursively find the 20 largest **files** in /dir/ larger than 1 gibibyte:<br>
