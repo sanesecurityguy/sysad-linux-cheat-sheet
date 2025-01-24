@@ -85,7 +85,7 @@ Search for SELinux denials:<br>
 
 SSH through a jump server:<br>
 `ssh -J [USERNAME]@[JUMP-SERVER-IP] [USERNAME]@[TARGET-IP]`<br>
-Create an SSH tunnel to a TCP socket:<br>
+Create an SSH tunnel to a TCP socket through a jump server:<br>
 `ssh -L localhost:[LOCAL-PORT]:[TARGET-IP]:[TARGET-PORT] -N [USERNAME]@[JUMP-SERVER-IP]`
 
 Completely clear your bash history:<br>
