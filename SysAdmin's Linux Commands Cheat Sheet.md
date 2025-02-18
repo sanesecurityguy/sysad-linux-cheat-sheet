@@ -99,7 +99,24 @@ You might want to do this when you have sensitive information like passwords in 
 
 ### DNF
 
-See updates and patches available for a software package:<br>
-`dnf updateinfo --info [PACKAGE-NAME]`<br>
-See updates and patches already installed for a software package:<br>
-`dnf updateinfo --info --installed [PACKAGE-NAME]`
+List installed packages:<br>
+`dnf ls --installed`<br>
+List files in a package:<br>
+`dnf rq -l [PACKAGE]`<br>
+See what package/s provide a file:<br>
+`dnf wp [FILENAME]`<br>
+See patches already installed for a CVE:<br>
+`dnf upif --list --with-cve --installed | grep [CVE]`<br>
+See patches not yet installed for a CVE:<br>
+`dnf upif --list --with-cve | grep [CVE]`
+
+### Zypper
+
+List installed packages:<br>
+`zypper se -i`<br>
+List files in a package:<br>
+`rpm -ql [PACKAGE]`<br>
+See what package/s provide a file:<br>
+`zypper se --provides --match-exact [FILENAME]`<br>
+See patches not yet installed for a CVE:<br>
+`zypper lp --cve=[CVE]`
