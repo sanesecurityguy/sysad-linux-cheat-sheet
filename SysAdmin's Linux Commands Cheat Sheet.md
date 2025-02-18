@@ -81,7 +81,12 @@ You can see the PID of the current terminal session with this:<br>
 `echo $$`
 
 Search for SELinux denials:<br>
-`ausearch -m AVC,USER_AVC,SELINUX_ERR,USER_SELINUX_ERR -ts recent -c [COMMAND-OR-PROCESS-NAME]`
+`ausearch -m AVC,USER_AVC,SELINUX_ERR,USER_SELINUX_ERR -ts recent -c [COMMAND-OR-PROCESS-NAME]`<br>
+If you think SELinux is denying operations inside a container, but don't see any denials from `ausearch` try:<br>
+`semanage dontaudit off`<br>
+and then run `ausearch` again. Don't forget to<br>
+`semanage dontaudit on`<br>
+when you're done testing.
 
 SSH through a jump server:<br>
 `ssh -J [USERNAME]@[JUMP-SERVER-IP] [USERNAME]@[TARGET-IP]`<br>
