@@ -4,6 +4,9 @@ Check the **CPU** usage of the 5 most CPU-intensive processes:<br>
 Check the **memory** usage of the 5 most memory-hungry processes:<br>
 `ps -eo %mem,comm,pid,user,etime --sort=-%mem | head -6`
 
+See the full process tree along with each process's arguments:<br>
+`pstree -al`
+
 List all partitions:<br>
 `df -h -x tmpfs -x devtmpfs`<br>
 List only local partitions:<br>
