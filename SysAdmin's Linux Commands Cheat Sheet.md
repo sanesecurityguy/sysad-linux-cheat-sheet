@@ -108,7 +108,7 @@ See what package/s provide a file:<br>
 `dnf wp [FILENAME]`<br>
 See patches already installed for a CVE:<br>
 `dnf upif --list --with-cve --installed | grep [CVE]`<br>
-See patches not yet installed for a CVE:<br>
+See patches for a CVE that are available but not yet installed:<br>
 `dnf upif --list --with-cve | grep [CVE]`
 
 ### Zypper
@@ -119,5 +119,5 @@ List files in a package:<br>
 `rpm -ql [PACKAGE]`<br>
 See what package/s provide a file:<br>
 `zypper se --provides --match-exact [FILENAME]`<br>
-See patches not yet installed for a CVE:<br>
+See patches for a CVE that are available but not yet installed:<br>
 `zypper lp --cve=[CVE]`
