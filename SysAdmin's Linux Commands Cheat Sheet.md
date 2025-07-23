@@ -1,5 +1,7 @@
 Check the **CPU** usage of the 5 most CPU-intensive processes:<br>
 `ps -eo %cpu,comm,pid,user,etime --sort=-%cpu | head -6`<br>
+Sometimes you'll want to use `top` instead of `ps`. Sometimes `ps` is inaccurate while `top` is accurate.<br>
+`top -d 10 -o +%CPU`<br>
 Check the **memory** usage of the 5 most memory-hungry processes:<br>
 `ps -eo %mem,comm,pid,user,etime --sort=-%mem | head -6`<br>
 See the full process tree along with each process's arguments:<br>
