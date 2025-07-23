@@ -4,8 +4,8 @@ Sometimes you'll want to use `top` instead of `ps`. Sometimes `ps` is inaccurate
 `top -d 10 -o +%CPU`<br>
 Check the **memory** usage of the 5 most memory-hungry processes:<br>
 `ps -eo %mem,comm,pid,user,etime --sort=-%mem | head -6`<br>
-See the full process tree along with each process's arguments:<br>
-`pstree -al`
+See a process's full process tree along with its arguments:<br>
+`pstree -pals [PID]`
 
 List all partitions:<br>
 `df -h -x tmpfs -x devtmpfs`<br>
