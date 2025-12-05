@@ -16,7 +16,7 @@ Find the 9 largest **directories** in /dir/ (does not work correctly at root dir
 `du -hx -d 1 /dir/ | sort -hr | head`<br>
 Find the 9 largest **directories and files** in /dir/ (does not work correctly at root directory /):<br>
 `du -hax -d 1 /dir/ | sort -hr | head`<br>
-Find the 10 largest **directories and files** in root directory / (This is necessary because `du -a` provides incorrect output when run on the root directory):<br>
+Find the 10 largest **directories and files** in root directory / (This is necessary because `du -d` provides incorrect output when run on the root directory):<br>
 `du -shx /* 2>/dev/null | sort -hr | head`
 
 Recursively find the 20 largest **files** in /dir/ larger than 1 gibibyte:<br>
