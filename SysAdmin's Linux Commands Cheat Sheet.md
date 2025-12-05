@@ -5,7 +5,7 @@ Sometimes you'll want to use `top` instead of `ps`. Sometimes `ps` is inaccurate
 Check the **memory** usage of the 5 most memory-hungry processes:<br>
 `ps -eo %mem,comm,pid,user,etime --sort=-%mem | head -6`<br>
 See a process's full process tree along with its arguments:<br>
-`pstree -pals [PID]`
+`pstree -pals $PID`
 
 List all partitions:<br>
 `df -h -x tmpfs -x devtmpfs`<br>
@@ -36,14 +36,14 @@ See which processes are writing the most to disk:<br>
 `iotop -Po -d 10`<br>
 Use the [LEFT] and [RIGHT] arrow keys to choose which column to sort the results by, and use the [R] key to reverse the sorting order.<br>
 See which files and directories a process is writing to:<br>
-`lsof -p [PID]`
+`lsof -p $PID`
 
 Backup a directory to another location:<br>
-`rsync -vazHAP [SOURCE] [DESTINATION]`<br>
+`rsync -vazHAP "$SOURCE" "$DESTINATION"`<br>
 Same as above but with root privileges on the remote machine:<br>
-`rsync --rsync-path="sudo rsync" -vazHAP [SOURCE] [DESTINATION]`<br>
+`rsync --rsync-path="sudo rsync" -vazHAP "$SOURCE" "$DESTINATION"`<br>
 Same as above but using an AskPass program to provide a mandatory password upon sudo-ing:<br>
-`rsync --rsync-path="export SUDO_ASKPASS=[PATH-TO-ASKPASS-PROGRAM]; sudo -A rsync" -vazHAP [SOURCE] [DESTINATION]`
+`rsync --rsync-path='export SUDO_ASKPASS="$PATH_TO_ASKPASS_PROGRAM"; sudo -A rsync' -vazHAP "$SOURCE" "$DESTINATION"`
 
 Check what processes are listening on what ports:<br>
 `ss -tupln`<br>
@@ -55,15 +55,15 @@ Check what Podman containers are listening on what ports:<br>
 List all virtual machines:<br>
 `virsh list --all`<br>
 List a virtual machine's allocated CPU's:<br>
-`virsh vcpucount [VM-NAME]`<br>
+`virsh vcpucount $VM_NAME`<br>
 List a virtual machine's allocated memory:<br>
-`virsh dommemstat [VM-NAME] | grep actual`<br>
+`virsh dommemstat $VM_NAME | grep actual`<br>
 List the mount points of a virtual machine's drives:<br>
-`virsh domblklist [VM-NAME]`<br>
+`virsh domblklist $VM_NAME`<br>
 Start, stop, or reboot a virtual machine:<br>
-`virsh start [VM-NAME]`<br>
-`virsh shutdown [VM-NAME]`<br>
-`virsh reboot [VM-NAME]`
+`virsh start $VM_NAME`<br>
+`virsh shutdown $VM_NAME`<br>
+`virsh reboot $VM_NAME`
 
 Verify that one or more TLS certificates are valid:<br>
 `openssl verify -CApath /etc/ssl/certs/ -CAfile [CA-BUNDLE.crt] [TLS.crt] [TLS-2.crt] [TLS-3.crt] [...]`<br>
@@ -73,7 +73,7 @@ Record to the terminal the output of one or more commands every 5 seconds:<br>
 `while sleep 5; do [ONE OR MORE COMMANDS SEPARATED BY SEMICOLONS]; echo; done`<br>
 **Stop it with [Ctrl + C]**<br>
 Record in the background to a file the time (with time zone) and output of one or more commands every 5 seconds, and save the recording command's PID:<br>
-`while sleep 5; do date +"%H:%M:%S %:z"; [COMMAND 1]; [COMMAND 2]; [...]; echo; done >> record.log & echo $! > recorder.pid`<br>
+`while sleep 5; do date +"%H:%M:%S %:z"; [COMMAND 1]; [COMMAND 2]; [COMMAND 3]; [...]; echo; done >> record.log & echo $! > recorder.pid`<br>
 Monitor updates to that file:<br>
 `tail -f record.log`<br>
 Remember to kill it when you don't need it anymore, otherwise it will perpetually eat up drive space:<br>
@@ -86,7 +86,7 @@ You can see the PID of the current terminal session with this:<br>
 `echo $$`
 
 Search for SELinux denials:<br>
-`ausearch -m AVC,USER_AVC,SELINUX_ERR,USER_SELINUX_ERR -ts recent -c [COMMAND-OR-PROCESS-NAME]`<br>
+`ausearch -m AVC,USER_AVC,SELINUX_ERR,USER_SELINUX_ERR -ts recent -c $COMMAND_OR_PROCESS_NAME`<br>
 If you think SELinux is denying operations inside a container, but don't see any denials from `ausearch` try:<br>
 `semanage dontaudit off`<br>
 and then run `ausearch` again. Don't forget to<br>
@@ -94,9 +94,9 @@ and then run `ausearch` again. Don't forget to<br>
 when you're done testing.
 
 SSH through a jump server:<br>
-`ssh -J [USERNAME]@[JUMP-SERVER-IP] [USERNAME]@[TARGET-IP]`<br>
+`ssh -J $USERNAME@$JUMP_SERVER_IP $USERNAME@$TARGET_IP`<br>
 Create an SSH tunnel to a TCP socket through a jump server:<br>
-`ssh -L localhost:[LOCAL-PORT]:[TARGET-IP]:[TARGET-PORT] -N [USERNAME]@[JUMP-SERVER-IP]`
+`ssh -L localhost:$LOCAL_PORT:$TARGET_IP:$TARGET_PORT -N $USERNAME@$JUMP_SERVER_IP`
 
 Completely clear your bash history:<br>
 `cat /dev/null > ~/.bash_history && history -c`<br>
@@ -107,21 +107,21 @@ You might want to do this when you have sensitive information like passwords in 
 List installed packages:<br>
 `dnf ls --installed`<br>
 List files in a package:<br>
-`dnf rq -l [PACKAGE]`<br>
+`dnf rq -l $PACKAGE`<br>
 See what package/s provide a file:<br>
-`dnf wp [FILENAME]`<br>
+`dnf wp $FILENAME`<br>
 See patches already installed for a CVE:<br>
-`dnf upif --list --with-cve --installed | grep [CVE]`<br>
+`dnf upif --list --with-cve --installed | grep $CVE`<br>
 See patches for a CVE that are available but not yet installed:<br>
-`dnf upif --list --with-cve | grep [CVE]`
+`dnf upif --list --with-cve | grep $CVE`
 
 ### Zypper
 
 List installed packages:<br>
 `zypper se -i`<br>
 List files in a package:<br>
-`rpm -ql [PACKAGE]`<br>
+`rpm -ql $PACKAGE`<br>
 See what package/s provide a file:<br>
-`zypper se --provides --match-exact [FILENAME]`<br>
+`zypper se --provides --match-exact $FILENAME`<br>
 See patches for a CVE that are available but not yet installed:<br>
-`zypper lp --cve=[CVE]`
+`zypper lp --cve=$CVE`
