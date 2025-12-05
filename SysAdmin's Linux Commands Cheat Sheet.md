@@ -12,10 +12,12 @@ List all partitions:<br>
 List only local partitions:<br>
 `df -hl -x tmpfs -x devtmpfs`
 
-Find the 9 largest **directories** in /dir/:<br>
+Find the 9 largest **directories** in /dir/ (does not work correctly at root directory /):<br>
 `du -hx -d 1 /dir/ | sort -hr | head`<br>
-Find the 9 largest **directories and files** in /dir/:<br>
-`du -hax -d 1 /dir/ | sort -hr | head`
+Find the 9 largest **directories and files** in /dir/ (does not work correctly at root directory /):<br>
+`du -hax -d 1 /dir/ | sort -hr | head`<br>
+Find the 10 largest **directories and files** in root directory / (This is necessary because `du -a` provides incorrect output when run on the root directory):<br>
+`du -shx /* 2>/dev/null | sort -hr | head`
 
 Recursively find the 20 largest **files** in /dir/ larger than 1 gibibyte:<br>
 `find /dir/ -type f -size +1G -exec du -h "{}" \+ | sort -hr | head -20`<br>
