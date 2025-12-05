@@ -94,9 +94,9 @@ and then run `ausearch` again. Don't forget to<br>
 when you're done testing.
 
 SSH through a jump server:<br>
-`ssh -J $USERNAME@$JUMP_SERVER_IP $USERNAME@$TARGET_IP`<br>
+`ssh -J $JUMP_USER@$JUMP_SERVER_IP $TARGET_USER@$TARGET_IP`<br>
 Create an SSH tunnel to a TCP socket through a jump server:<br>
-`ssh -L localhost:$LOCAL_PORT:$TARGET_IP:$TARGET_PORT -N $USERNAME@$JUMP_SERVER_IP`
+`ssh -L localhost:$LOCAL_PORT:$TARGET_IP:$TARGET_PORT -N $JUMP_USER@$JUMP_SERVER_IP`
 
 Completely clear your bash history:<br>
 `cat /dev/null > ~/.bash_history && history -c`<br>
