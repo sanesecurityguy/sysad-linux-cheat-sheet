@@ -128,7 +128,7 @@ Start, stop, or reboot a virtual machine:<br>
 `virsh shutdown $VM_NAME`<br>
 `virsh reboot $VM_NAME`
 
-Create a new VM in text mode (without a GUI):
+Create a new VM and install an OS in text mode (without a GUI):
 ```sh
 virt-install \
 --name=$VM_NAME \
