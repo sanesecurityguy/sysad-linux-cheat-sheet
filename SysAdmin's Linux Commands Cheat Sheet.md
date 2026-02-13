@@ -52,19 +52,6 @@ Check what Docker containers are listening on what ports:<br>
 Check what Podman containers are listening on what ports:<br>
 `podman ps --format "table {{.Names}}\t{{.Ports}}"`
 
-List all virtual machines:<br>
-`virsh list --all`<br>
-List a virtual machine's allocated CPU's:<br>
-`virsh vcpucount $VM_NAME`<br>
-List a virtual machine's allocated memory:<br>
-`virsh dommemstat $VM_NAME | grep actual`<br>
-List the mount points of a virtual machine's drives:<br>
-`virsh domblklist $VM_NAME`<br>
-Start, stop, or reboot a virtual machine:<br>
-`virsh start $VM_NAME`<br>
-`virsh shutdown $VM_NAME`<br>
-`virsh reboot $VM_NAME`
-
 Verify that one or more TLS certificates are valid:<br>
 `openssl verify -CApath /etc/ssl/certs/ -CAfile [CA-BUNDLE.crt] [TLS.crt] [TLS-2.crt] [TLS-3.crt] [...]`<br>
 Note that `-CApath /etc/ssl/certs/` is necessary when the CA bundle doesn't contain the root CA certificate, which is normal and expected by most web browsers but not expected by `openssl`.
@@ -125,3 +112,32 @@ See what package/s provide a file:<br>
 `zypper se --provides --match-exact $FILENAME`<br>
 See patches for a CVE that are available but not yet installed:<br>
 `zypper lp --cve=$CVE`
+
+### libvirt
+
+List all virtual machines:<br>
+`virsh list --all`<br>
+List a virtual machine's allocated CPU's:<br>
+`virsh vcpucount $VM_NAME`<br>
+List a virtual machine's allocated memory:<br>
+`virsh dommemstat $VM_NAME | grep actual`<br>
+List the mount points of a virtual machine's drives:<br>
+`virsh domblklist $VM_NAME`<br>
+Start, stop, or reboot a virtual machine:<br>
+`virsh start $VM_NAME`<br>
+`virsh shutdown $VM_NAME`<br>
+`virsh reboot $VM_NAME`
+
+Create a new VM in text mode (without a GUI):
+```sh
+virt-install \
+--name=$VM_NAME \
+--os-variant $OS_VARIANT \
+--location $INSTALLER_LOCATION \
+--vcpus=$CPU_COUNT \
+--memory=$MEM_SIZE \
+--disk size=$DISK_SIZE \
+--network bridge=$IF_NAME \
+--graphics none \
+--extra-args 'console=ttyS0,115200n8'
+```
