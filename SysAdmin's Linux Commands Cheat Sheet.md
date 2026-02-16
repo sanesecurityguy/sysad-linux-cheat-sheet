@@ -135,9 +135,8 @@ virt-install \
 --os-variant $OS_VARIANT \
 --location $INSTALLER_LOCATION \
 --vcpus $CPU_COUNT \
---memory $MEM_SIZE \
---disk size=$DISK_SIZE \
---network bridge=$IF_NAME \
+--memory $MEM_SIZE_MiB \
+--disk size=$DISK_SIZE_GiB \
 --graphics none \
 --extra-args 'console=ttyS0'
 ```
