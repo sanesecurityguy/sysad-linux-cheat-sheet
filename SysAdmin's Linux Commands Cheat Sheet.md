@@ -131,13 +131,13 @@ Start, stop, or reboot a virtual machine:<br>
 Create a new VM and install an OS in text mode (without a GUI):
 ```sh
 virt-install \
---name=$VM_NAME \
+--name $VM_NAME \
 --os-variant $OS_VARIANT \
 --location $INSTALLER_LOCATION \
---vcpus=$CPU_COUNT \
---memory=$MEM_SIZE \
+--vcpus $CPU_COUNT \
+--memory $MEM_SIZE \
 --disk size=$DISK_SIZE \
 --network bridge=$IF_NAME \
 --graphics none \
---extra-args 'console=ttyS0,115200n8'
+--extra-args 'console=ttyS0'
 ```
